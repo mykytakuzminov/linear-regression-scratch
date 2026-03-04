@@ -57,6 +57,18 @@ class Matrix:
 
         return Matrix(new_data)
 
+    def __sub__(self, obj: Matrix) -> Matrix:
+        ""
+        if self.shape != obj.shape:
+            raise ValueError(f"Matrix subtraction requires identical shapes. Got {self.shape} and {obj.shape}.")
+
+        new_data = [
+            [a - b for a, b in zip(row_a, row_b)]
+            for row_a, row_b in zip(self.data, obj.data)
+        ]
+
+        return Matrix(new_data)
+
     def __eq__(self, obj: object) -> bool:
         ""
         if not isinstance(obj, Matrix):
@@ -96,6 +108,14 @@ class Matrix:
         ""
         return self * obj
 
+    def __pow__(self, power: int | float) -> Matrix:
+        ""
+        new_data = [
+            [a ** power for a in row] for row in self.data
+        ]
+
+        return Matrix(new_data)
+
     @property
     def data(self) -> list[list[float]]:
         ""
@@ -126,6 +146,14 @@ class Matrix:
         new_data = zip(*self.data)
         t_rows = [list(row) for row in new_data]
         return Matrix(t_rows)
+
+    def sum(self) -> float:
+        ""
+        return sum([sum(row) for row in self.data])
+
+    def mean(self) -> float:
+        ""
+        return self.sum() / (self.shape[0] * self.shape[1])
 
     def _check_index(self, row: int, col: int) -> None:
         ""
