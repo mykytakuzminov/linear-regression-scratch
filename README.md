@@ -43,7 +43,20 @@ The `fit` method implements **Batch Gradient Descent** to iteratively update par
 ### 3. Loss Function
 We use the Mean Squared Error (MSE) to quantify the model's performance during training.
 
-## ⚙️ Environment Setup
+## ⚙️ Development Setup
+
+Follow these steps to set up the project locally for development and testing. These instructions cover **macOS**, **Linux**, and **Windows**.
+
+### 1. Clone
+
+Start by cloning the repository to your local machine and navigating into the project directory.
+
+```bash
+git clone https://github.com/mykytakuzminov/linear-regression-scratch.git
+cd linear-regression-scratch
+```
+
+### 2. Environment Setup
 
 It is highly recommended to use a virtual environment to keep dependencies isolated. Choose the commands that match your operating system and shell.
 
