@@ -1,5 +1,5 @@
 import pytest
-from src.core.matrix import Matrix
+from src.linlag.matrix import Matrix
 from src.models.linear_regression import LinearRegression
 
 X = Matrix([[1.0], [2.0], [3.0]])
