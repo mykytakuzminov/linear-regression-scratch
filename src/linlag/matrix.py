@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 class Matrix:
     def __init__(self, data: list[list[float]]) -> None:
         self.data = data
@@ -44,7 +41,7 @@ class Matrix:
 
         elif isinstance(obj, Matrix):
             if self.shape != obj.shape:
-                raise ValueError()
+                raise ValueError("Different dimensions")
 
             new_data = [
                 [a + b for a, b in zip(row_a, row_b, strict=False)]
@@ -60,7 +57,7 @@ class Matrix:
 
         elif isinstance(obj, Matrix):
             if self.shape != obj.shape:
-                raise ValueError()
+                raise ValueError("Different dimensions")
 
             new_data = [
                 [a - b for a, b in zip(row_a, row_b, strict=False)]
@@ -89,7 +86,7 @@ class Matrix:
 
         elif isinstance(obj, Matrix):
             if self.shape[1] != obj.shape[0]:
-                raise ValueError()
+                raise ValueError("Impossible multiplication")
 
             cols_b = obj.transpose().data
 
@@ -118,12 +115,13 @@ class Matrix:
     @data.setter
     def data(self, new_data: list[list[float]]) -> None:
         if not len(new_data):
-            raise ValueError()
+            raise ValueError("Empty data was given")
 
+        # all rows have the same amount of elements
         cols = len(new_data[0])
         for row in new_data:
             if len(row) != cols:
-                raise ValueError()
+                raise ValueError("Rows are not equal")
 
         self._data = new_data
 
@@ -146,7 +144,7 @@ class Matrix:
 
     def _check_index(self, row: int, col: int) -> None:
         if row < 0 or col < 0:
-            raise IndexError()
+            raise IndexError("Negative index")
 
         if row >= self.shape[0] or col >= self.shape[1]:
-            raise IndexError()
+            raise IndexError("Index out of bounds")
